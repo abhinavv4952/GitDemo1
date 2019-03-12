@@ -1,29 +1,26 @@
 import java.util.*;
-class ssample
+public class Main
 {
-	public static void main(String args[]){
-		Scanner sc=new Scanner(System.in);
-		System.out.println("enter number ");
-		int n=sc.nextInt();
-		Stack st=new Stack();
-		while(n>0){
-			int a=n%26;
-			if(n<=26){
-				st.push((char)(64+n));
-				break;
-			}
-			if(a==0){
-				st.push("Z");
-				n=(n/26)-1;
-				continue;
-			}
-			else if(a<26){
-				st.push((char)(64+a));
-			}
-			n=n/26;
-		}
-		while (!st.isEmpty()){
-    		System.out.print(st.pop());
-		}
-	}
+public static void main(String[] args) {
+Scanner sc=new Scanner(System.in);
+    int n=sc.nextInt();
+    StringBuilder s=new StringBuilder();
+    s=excel(n,s);
+    System.out.println(s.reverse());
+}
+public static StringBuilder excel(int n,StringBuilder s){
+    int rem=n%26;
+    if(rem==0){
+        s.append("Z");
+        n=n/26-1;
+    }
+    else{
+        s.append((char)(rem-1+'A'));
+        n=n/26;
+    }
+    if(n!=0){
+        excel(n,s);
+    }
+    return s;
+}
 }
