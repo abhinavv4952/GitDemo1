@@ -1,2 +1,74 @@
-sadbhfbasdhf
-wehruwehquir
+import java.io.*;
+//call the methods by creating a main method
+writedata(){
+BufferedWriter bw = null;
+		String whole,cred,name="";
+		boolean continue_read =true;
+		
+		//creating a new scanner object to read our input
+		Scanner sc = new Scanner(System.in);
+		
+		/*
+		 * 
+		 * enclose the whole operation in a try/catch/finally block 
+		 * that throws an IOException in case an error occurs
+		 * 
+		*/
+		try{
+		//set the write mode to append
+		bw = new BufferedWriter(new FileWriter("path/to/emp.txt",true));
+ 
+		//enclose the write operation in a while loop
+		
+		while(continue_read){
+			
+		
+		System.out.println("Enter employee Name: (-s to stop)");
+		
+		name = sc.nextLine(); //read and assign read string to name
+		
+		//break if '-s' is entered
+		
+		if(name.contains("-s")){
+			continue_read=false;
+			break;
+			
+		}
+		
+		//read the credentials
+		
+		System.out.println("Enter employee Credential:");
+		cred = sc.nextLine();
+		
+		//concatenate the two strings into one string delimited space
+		whole = name + " " + cred;
+		
+		//write to file
+		bw.write(whole);
+		//new line character after writing to file
+		bw.newLine();
+		//flush our bufferedWriter object
+		bw.flush();
+		}
+		}catch (IOException ioe) {
+			 ioe.printStackTrace();
+	      }
+		finally{
+			if (bw != null) try {
+			    bw.close();
+			 }catch (IOException ioe2) {
+				    // just ignore it
+			 }
+		}
+		
+}
+readata(){
+ File file = new File("C:\\Users\\pankaj\\Desktop\\test.txt"); 
+  
+
+  BufferedReader br = new BufferedReader(new FileReader(file)); 
+  
+  String st; 
+  while ((st = br.readLine()) != null) 
+    System.out.println(st); 
+}
