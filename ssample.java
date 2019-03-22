@@ -1,20 +1,17 @@
-import java.sql.ResultSet;
-import java.util.*;
-public class Client {
+lastouccurence(){
+	String str="hello world string bye";
+	int i,j,k,l;
+	int flag=0;	
+String[] s1=str.split(" ");
+	for(i=s1.length-1;i>=0;i--){
+		if(s1[i].equals("string")){
+		flag=1;
+		System.out.println("found");
+		break;	
+}
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		ArrayList<DBCol> al=new ArrayList<>();
-		int i,j,k,l;
-		ResultSet rs=stmt.executeQuery();//create a statement of select statement with stmt variable
-		while(rs.next()){
-			DBCol db=new DBCol();
-			db.setAttr1(rs.getString(1));
-			db.setAttr2(rs.getInt(1));
-			db.setAttr3(rs.getString(1));
-			al.add(db);
-		}
-		//print the arraylist
 	}
-
+	if(flag==0){
+System.out.println("not found");}
+}
 }
