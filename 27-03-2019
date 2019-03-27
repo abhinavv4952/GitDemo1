@@ -1,11 +1,10 @@
-static void customPrint(ArrayList<String> al){
+@Override
+ public String  toString(Employee e){//replace line 3-9 in the to String method
   int i,j,k,l;
   Sop(" ------------------------ ");
   Sop("| Id  | Name    | Address|");
   Sop("| __  | ____    | _______|");
   Sop("|     |         |        |")
-  for(i=0;i<al.size();i++){
-    Sop(al.get(i));
-  }
+  Sop("|"+ e.getId()+"  | "+e.getName()+"    | "+e.getAddress()|");
   Sop("--------------------------");
 }
