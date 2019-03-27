@@ -1,0 +1,80 @@
+import java.util.*;
+import java.io.FileWriter;
+import java.io.IOException; 
+import java.io.FileReader;
+
+class test 
+{
+    class Data 
+    { 
+        int id; 
+        String name; 
+        int salary;  
+        Data(int id, String name, int salary) 
+        { 
+            this.id = id; 
+            this.name = name; 
+            this.salary = salary; 
+        } 
+    }
+	public static void main(String args[]) 
+    {
+		test t=new test();
+		System.out.println("Ready to read Data ..............");
+		t.readData();
+    } 
+	public void readData(){
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter number of records: ");
+		int n=sc.nextInt();
+		ArrayList<Data> list=new ArrayList<>();
+		for (int i = 1; i <= n ; i++) 
+        {
+			System.out.println("Enter person-"+i+" details");
+			System.out.println("employee "+i+" ID - ");
+			int id=sc.nextInt();
+			System.out.println("employee "+i+" name - ");
+			String name=sc.next();
+			System.out.println("employee "+i+" Salary - ");
+			int salary=sc.nextInt();
+            list.add(new Data(id, name, salary)); 
+        }
+		test t=new test();
+		System.out.println("writing Data to a file..............");
+		t.writeToFile(list,n);
+	}
+	public void writeToFile(ArrayList<Data> list,int n) 
+    { 
+		try {
+            FileWriter writer = new FileWriter("MyFile.txt", true);
+			writer.write("ID\tName\tSalary\r\n");
+			for (int i = 0; i < n; i++) 
+			{ 
+				Data data = list.get(i); 
+				System.out.println(data.id+" "+data.name+" "+data.salary);
+				writer.write(data.id+"\t"+data.name+"\t"+data.salary+"\r\n");
+			}
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+		test t=new test();
+		System.out.println("reading Data from a file..............");
+		t.readFile("MyFile.txt");
+    }
+	public void readFile(String fileName){
+		try {
+            FileReader reader = new FileReader("MyFile.txt");
+            int character;
+ 
+            while ((character = reader.read()) != -1) {
+                System.out.print((char) character);
+            }
+            reader.close();
+ 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+	
+	}
+}
