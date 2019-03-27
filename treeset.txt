@@ -1,0 +1,100 @@
+import java.util.*;
+import java.io.FileWriter;
+import java.io.IOException; 
+import java.io.FileReader;
+
+class emp implements Comparable<emp>
+{
+	int id,salary;
+	String name;
+    public emp(int id, String name, int salary) 
+    { 
+            this.id = id; 
+            this.name = name; 
+            this.salary = salary; 
+         
+    }
+	public int getId() {
+        return id;
+    }
+	public void setId(int id) {
+        this.id = id;
+    }
+	 public String getName() {
+        return name;
+    }
+	public void setName(String name) {
+        this.name = name;
+    }
+	@Override
+	public int compareTo(emp employee) {
+        return this.getId() - employee.getId();
+    }
+	@Override
+    public String toString() {
+        return 
+                "" + id +
+                "\t" + name + 
+				"\t"+salary ;
+    }
+}
+public class test{
+	public static void main(String args[]) 
+    {
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter number of records: ");
+		int n=sc.nextInt();
+		TreeSet<emp> list=new TreeSet<>();
+		for (int i = 0; i < n ; i++) 
+        {
+			System.out.println("Enter person- details");
+			System.out.println("employee ID - ");
+			int id=sc.nextInt();
+			System.out.println("employee name - ");
+			String name=sc.next();
+			System.out.println("employee Salary - ");
+			int salary=sc.nextInt();
+            list.add(new emp(id, name, salary)); 
+        }
+		test t=new test();
+		System.out.println("writing Data to a file..............");
+		t.writeToFile(list,n);
+	}
+	
+	public void writeToFile(TreeSet<emp> list,int n) 
+    { 
+		try{
+		FileWriter writer = new FileWriter("MyFile.txt", true);
+		writer.write("ID\tName\tSalary\r\n");
+		Iterator<emp> itr = list.iterator();
+		while (itr.hasNext()) {
+				writer.write(""+itr.next());
+				writer.write("\r\n");
+			}
+			writer.close();
+		} catch (IOException e) {
+				e.printStackTrace();
+		}
+		
+		test t=new test();
+		System.out.println("reading Data from a file..............");
+		t.readFile("MyFile.txt");
+    }
+	
+	public void readFile(String fileName){
+		try {
+            FileReader reader = new FileReader("MyFile.txt");
+            int character;
+ 
+            while ((character = reader.read()) != -1) {
+                System.out.print((char) character);
+            }
+            reader.close();
+ 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+	
+	}
+	
+}
