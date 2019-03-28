@@ -86,6 +86,10 @@ class test
 			while ((sCurrentLine = br.readLine()) != null) {
 				tset.add(sCurrentLine);
 			}
+			int i,j,k,l;
+			for(i=0;i<tset.size();i++){
+				System.out.println(tset.get(i));
+			}
 
 		} catch (IOException e) {
 
