@@ -16,6 +16,16 @@ class test
             this.name = name; 
             this.salary = salary; 
         } 
+	@Override
+ public String  toString(){//replace line 3-9 in the to String method
+  int i,j,k,l;
+  Sop(" ------------------------ ");
+  Sop("| Id  | Name    | Address|");
+  Sop("| __  | ____    | _______|");
+  Sop("|     |         |        |")
+  Sop("|"+ e.getId()+"  | "+e.getName()+"    | "+e.getAddress()|");
+  Sop("--------------------------");
+}
     }
 	public static void main(String args[]) 
     {
