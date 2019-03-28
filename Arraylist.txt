@@ -33,10 +33,10 @@ class test
 		System.out.println("Ready to read Data ..............");
 		t.readData();
     } 
-	public void readData(){
-		Scanner sc=new Scanner(System.in);
-		System.out.println("Enter number of records: ");
-		int n=sc.nextInt();
+	public List<Data> readData(int x){
+		//Scanner sc=new Scanner(System.in);
+		//System.out.println("Enter number of records: ");
+		int n=x;
 		ArrayList<Data> list=new ArrayList<>();
 		for (int i = 1; i <= n ; i++) 
         {
@@ -49,9 +49,7 @@ class test
 			int salary=sc.nextInt();
             list.add(new Data(id, name, salary)); 
         }
-		test t=new test();
-		System.out.println("writing Data to a file..............");
-		t.writeToFile(list,n);
+		return list;
 	}
 	public void writeToFile(ArrayList<Data> list,int n) 
     { 
@@ -68,9 +66,9 @@ class test
         } catch (IOException e) {
             e.printStackTrace();
         }
-		test t=new test();
-		System.out.println("reading Data from a file..............");
-		t.readFile("MyFile.txt");
+		//test t=new test();
+		//System.out.println("reading Data from a file..............");
+		//t.readFile("MyFile.txt");
     }
 	public void readFile(String fileName){
 		try {
