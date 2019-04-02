@@ -1,17 +1,77 @@
-lastouccurence(){
-	String str="hello world string bye";
-	int i,j,k,l;
-	int flag=0;	
-String[] s1=str.split(" ");
-	for(i=s1.length-1;i>=0;i--){
-		if(s1[i].equals("string")){
-		flag=1;
-		System.out.println("found");
-		break;	
-}
+import java.io.File;
+import java.io.FileOutputStream;
 
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
+
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+public class WriteDataToExcel {
+   public static void main(String[] args) throws Exception {
+
+      //Create blank workbook
+      XSSFWorkbook workbook = new XSSFWorkbook();
+      
+      //Create a blank sheet
+      XSSFSheet spreadsheet = workbook.createSheet( " Employee Info ");
+
+      //Create row object
+      XSSFRow row;
+	Scanner sc1,sc2;//add new Scanner(System.in);
+      //This data needs to be written (Object[])
+	Sysout("enter no.of values");//expand println
+int n=sc1.nextInt();
+int i,j,k,l;
+      Map < String, Object[] > empinfo = new TreeMap < String, Object[] >();
+      empinfo.put( "1", new Object[] {
+         "EMP ID", "EMP NAME", "DESIGNATION" });
+	Sysout("enter the data in format empid,empname,empdesgn");
+        for(i=2;i<=n+1;i++){
+		String temp=sc2.nextLine();
+		String[] arr=temp.split(",")
+		empinfo.put(i+"",new Object[] {
+         	arr[0], arr[1], arr[2] });
 	}
-	if(flag==0){
-System.out.println("not found");}
-}
+/*
+      empinfo.put( "2", new Object[] {
+         "tp01", "Gopal", "Technical Manager" });
+      
+      empinfo.put( "3", new Object[] {
+         "tp02", "Manisha", "Proof Reader" });
+      
+      empinfo.put( "4", new Object[] {
+         "tp03", "Masthan", "Technical Writer" });
+      
+      empinfo.put( "5", new Object[] {
+         "tp04", "Satish", "Technical Writer" });
+      
+      empinfo.put( "6", new Object[] {
+         "tp05", "Krishna", "Technical Writer" });
+*/
+      //Iterate over data and write to sheet
+      Set < String > keyid = empinfo.keySet();
+      int rowid = 0;
+      
+      for (String key : keyid) {
+         row = spreadsheet.createRow(rowid++);
+         Object [] objectArr = empinfo.get(key);
+         int cellid = 0;
+         
+         for (Object obj : objectArr){
+            Cell cell = row.createCell(cellid++);
+            cell.setCellValue((String)obj);
+         }
+      }
+      //Write the workbook in file system
+      FileOutputStream out = new FileOutputStream(
+         new File("C:/poiexcel/Writesheet.xlsx"));
+      
+      workbook.write(out);
+      out.close();
+      System.out.println("Writesheet.xlsx written successfully");
+   }
 }
