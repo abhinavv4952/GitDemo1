@@ -29,12 +29,15 @@ int i,j,k,l;
       Map < String, Object[] > empinfo = new TreeMap < String, Object[] >();
       empinfo.put( "1", new Object[] {
          "EMP ID", "EMP NAME", "DESIGNATION" });
-	Sysout("enter the data in format empid,empname,empdesgn");
-        for(i=2;i<=n+1;i++){
+	//Sysout("enter the data in format empid,empname,empdesgn");
+        k=2;
+	   for(i=1;i<=n;i++){
+		Sysout("enter the data in format empid,empname,empdesgn");
 		String temp=sc2.nextLine();
-		String[] arr=temp.split(",")
-		empinfo.put(i+"",new Object[] {
+		String[] arr=temp.split(",");
+		empinfo.put(k+"",new Object[] {
          	arr[0], arr[1], arr[2] });
+		  k++;
 	}
 /*
       empinfo.put( "2", new Object[] {
