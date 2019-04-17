@@ -1,0 +1,7 @@
+use:-https://stackoverflow.com/questions/30384473/how-to-import-jdbc-driver-into-dynamic-web-project
+
+our mysql jdbc driver should be placed into your tomcat's directory:
+
+catalina_base/webapps/app_name/WEB-INF/lib/
+
+Make sure to start/restart your server after placing your new mysql jdbc driver jar file there.
